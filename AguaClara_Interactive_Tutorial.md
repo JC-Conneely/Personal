@@ -95,11 +95,9 @@ Image with Height and Width Adjusted:
 
 1. Make an images folder in your personal repository, and import an image of your hometown or pet from that folder. Do it both unformatted, and formatted to change the size:
 
-![hometown](https://github.com/jtc284/Personal/blob/master/Monroe.jpg)
+![Monroe](https://raw.githubusercontent.com/jtc284/Personal/master/Monroe.jpg)
 
-
-
-
+<img src="https://raw.githubusercontent.com/jtc284/Personal/master/Monroe.jpg" height=200 width=100>
 
 ## Links
 You can also link text to a webpage. For example, I've inserted a link [here](http://aguaclara.cee.cornell.edu) to the AguaClara website.
@@ -108,7 +106,7 @@ To insert a link, all you have to do is enclose your linked text in `[]` followe
 
 1. Below, write a sentence describing your major, and insert a link to your major's department website.
 
-<!--- Fill you answer here. --->
+My major is environmental engineering. I am studying both natural, and engineered systems for water and wastewater treatment. [Here](https://bee.cals.cornell.edu/) is a link to my department website.
 
 ## Tables
 Tables in Markdown are slightly harder, but there's an automatic function that allows to you make one easily. When working in a `.md` file, all you have to do is type `table` and hit enter. It will initialize a 2 by 2 table, but you can easily increase the width by going to the last column and hitting `Tab` or it's height by clicking in any cell and hitting `Enter`. Notice in the example how the text below the header is justified left, center, and right. This is due to the line below the header. A line with a colon on the far left of the dashes only indicates left justified, colons on both sides of the dashes indicates centered, and a colon on the far right of the dashes indicates right justified.
@@ -138,8 +136,11 @@ When making tables, it's not important that the lines match up. For example, the
 
 1. Create a table listing your 3 favorite animals, foods, books, and places on campus. Try out the different cell justifications:
 
-<!--- Fill you answer here. --->
-
+|  | Animals  | Foods | Books |   Campus Locations  |
+|:---------- |:-------- | ----- | ----- | --- |
+First Favorite|       Dogs     | Burritos         |Soul Mountain       |   My Dorm    |
+| Second Favorite | Foxes    | French Fries    |  The Giver   |  Mann Library   |
+| Third Favorite | Deer | Raspberries | God of Small Things | A.D White Library|
 
 
 ## Code and Syntax Highlighting
@@ -157,13 +158,12 @@ For larger code blocks where you report multiple lines of code, you always start
 
 1. Below, write a Python print function with a different string using syntax highlighting:
 
-<!--- Fill you answer here. --->
+`print('I am doing this assignment right now!')`
 
 2. Now write a block of Python code for that same print statement:
-
-<!--- Fill you answer here. --->
-
-
+```python
+print('I am doing this assignment right now!')
+```
 
 ## LaTeX Equations
 You can also input LaTeX formatted equations in your Markdown file. To indicate where your equation is, you need to start and end your LaTeX equation with `$$`. To get the LaTeX preview to show it formatted, press `Cntrl + Shift + X`. For example, toggle the LaTeX preview for the line below:
@@ -172,8 +172,7 @@ $$ Re_D = \frac{uD}{\nu} $$
 
 1. Try it on your own! Write your favorite equation using LaTeX source code and toggle the LaTeX preview to see it formatted:
 
-<!--- Fill you answer here. --->
-
+$$ a^2+b^2=c^2 $$
 
 # Using Python and Running it With Hydrogen in Markdown
 
@@ -204,40 +203,51 @@ These questions are meant to test what you've learned from the Python Basics tut
 
 1. Write a conditional statement with 3 conditions: when x is 10, when x is 1, and when x is anything other than 1 or 10. For each condition, have your code print what the value is or isn't.
 
-<!--- Fill you answer here. --->
-
+```python
+x=10
+if x=1:
+  print('The value is one.')
+elif x=10:
+  print('The value is ten.')
+else:
+  print('The value is between one and ten.')
+```
 
 
 
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
-<!--- Fill you answer here. --->
-
-
-
-
-
-
-
-
+```python
+x=0
+for i in range(20):
+  x=x+i
+print(x)
+```
 
 3. Using the NumPy package, calculate the value of sin(4), and use the sigfig function from the utility module in aide_design to get your answer to 3 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
 
-<!--- Fill you answer here. --->
+```python
+from aide_design impornt*
 
+x=np.sin(4)
+ut.sig(np.sin(4),3)
+```
 
 
 4. Create a `list` of length 5, and verify the length of your list. Once you've done that, turn your `list` into an `array` and apply units of meters to it. After that, create a 5x5 `array`, extract the middle row and middle column. Verify the size of your 2D `array` and apply units of liters to it.
 
-<!--- Fill you answer here. --->
+```python
+x=[1,2,3,4,5]
+len(x)
+y=np.array(x)
+y=y*u.m
 
-
-
-
-
-
-
-
+z=np.array[[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]]
+z[2,:]
+z[:,2]
+np.size(z)
+z*u.L
+```
 
 5.  One of the most famous equations for a particle diffusing through a liquid at low Reynolds Number is the Stokes-Einstein Equation where k<sub>B</sub> is the Boltzmann constant, T is the temperature in Kelvin, eta is the dynamic viscosity in kg/(m*s), and r is the particle radius. Write a function that takes a temperature in Kelvin, a particle radius in meters, and a viscosity of water to calculate the diffusion coefficient D.
 
@@ -251,8 +261,12 @@ $$ D = \frac{k_BT}{6\pi\eta r} $$
 from scipy.constants import Boltzmann as kB_sc # I've imported the unitless value for kB from SciPy
 
 kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
+def Stokes():
+  T=T*u.K
+  R=R*u.m
+  V=V*u.m**3
 
-# Write your code here
+
 
 ```
 
