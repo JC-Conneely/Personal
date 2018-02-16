@@ -205,15 +205,13 @@ These questions are meant to test what you've learned from the Python Basics tut
 
 ```python
 x=10
-if x=1:
+if x==1:
   print('The value is one.')
-elif x=10:
+elif x==10:
   print('The value is ten.')
 else:
   print('The value is between one and ten.')
 ```
-
-
 
 2. Write a `for` loop that takes a variable with an initial value of 0, and adds the current index to the previous value of that variable (i.e. you variable should grow in size every iteration). Perform the iteration 20 times, and have the final value be printed at the end.
 
@@ -227,26 +225,25 @@ print(x)
 3. Using the NumPy package, calculate the value of sin(4), and use the sigfig function from the utility module in aide_design to get your answer to 3 sig-figs. *(Hint: You will need to import these packages. Remember how to do that?)*
 
 ```python
-from aide_design impornt*
+from aide_design import*
 
 x=np.sin(4)
 ut.sig(np.sin(4),3)
 ```
 
-
 4. Create a `list` of length 5, and verify the length of your list. Once you've done that, turn your `list` into an `array` and apply units of meters to it. After that, create a 5x5 `array`, extract the middle row and middle column. Verify the size of your 2D `array` and apply units of liters to it.
 
 ```python
+from aide_design.play import*
 x=[1,2,3,4,5]
-len(x)
 y=np.array(x)
-y=y*u.m
+yUnits=y*u.m
 
-z=np.array[[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]]
+z=np.array([[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]])
 z[2,:]
 z[:,2]
 np.size(z)
-z*u.L
+zUnits=z*u.L
 ```
 
 5.  One of the most famous equations for a particle diffusing through a liquid at low Reynolds Number is the Stokes-Einstein Equation where k<sub>B</sub> is the Boltzmann constant, T is the temperature in Kelvin, eta is the dynamic viscosity in kg/(m*s), and r is the particle radius. Write a function that takes a temperature in Kelvin, a particle radius in meters, and a viscosity of water to calculate the diffusion coefficient D.
@@ -258,31 +255,52 @@ z*u.L
 $$ D = \frac{k_BT}{6\pi\eta r} $$
 
 ```python
-from scipy.constants import Boltzmann as kB_sc # I've imported the unitless value for kB from SciPy
+from scipy.constants import Boltzmann as kB_sc
 
-kB = kB_sc * u.joule / u.kelvin # I've given kB units for you in J/K; you can use the kB variable to give you Boltzmann's constant with units
-def Stokes():
-  T=T*u.K
-  R=R*u.m
-  V=V*u.m**3
+kB = kB_sc * u.joule / u.kelvin
 
+def Stokes(temperature, radius, viscosity):
+  T=temperature*u.kelvin
+  R=radius*u.m
+  eta=viscosity*u.kg/(u.m*u.s)
+  D=(kB*T)/(3*np.pi*eta*R)
+  return D
 
-
+x=Stokes(300,10,20)
+print(x)
+y=Stokes(350,5,50)
+print(y)
 ```
 
 6. You have a pipe with a radius of 0.2 m with water flowing in it at 2 m<sup>3</sup>/s. You want to see how the Reynolds Number changes as viscosity changes due to a change in temperature from 0 to 200<sup>o</sup>C. Create a plot of Reynolds Number against Temperature in Kelvin to show a relationship. Make sure your plot has a title and labeled axes. You can use functions from `physchem` like `pc.re_pipe` and `pc.viscosity_kinematic`. *(Hint: Make an array of temperatures to input into the `pc.viscosity_kinematic` function)*.
 
-<!--- Fill you answer here. --->
+```python
+from aide_design.play import*
+
+Q=2*u.m**3/u.s
+R=0.2*u.m
+tempArray=np.arange(273,473,1)*u.kelvin
+viscArray=pc.viscosity_kinematic(tempArray)
+reArray=pc.re_pipe(Q,R,viscArray)
+
+plt.plot(tempArray,reArray,'-',label='Reynolds Number')
+plt.xlabel('Temperature (Kelvin)')
+plt.ylabel('Reynolds Number')
+plt.title('The Effect of Temperature on Reynolds Number')
+plt.minorticks_on()
+plt.grid(which='major')
+plt.grid(which='minor')
+plt.show()
+```
 
 # Teletype Basics
 In this section you and your team can practice using Teletype together.
 
 1. Create a portal for your team members to join. Have them write you words of  encouragement in the space below, and be sure they sign their name next to their encouragements.
 
-<!--- Fill you answer here. --->
+Justin! You're the coolest and story telling club is bomb af - Sneha
 
-
-
+Good job, man. You did it. - Mike
 
 2. Have you other team members create a portal for you to join. In their Markdown file, write them something encouraging, and sign your name.
 
