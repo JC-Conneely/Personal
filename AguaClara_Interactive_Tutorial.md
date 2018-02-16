@@ -95,9 +95,9 @@ Image with Height and Width Adjusted:
 
 1. Make an images folder in your personal repository, and import an image of your hometown or pet from that folder. Do it both unformatted, and formatted to change the size:
 
-![Monroe](https://raw.githubusercontent.com/jtc284/Personal/master/Monroe.jpg)
+![Hometown](https://raw.githubusercontent.com/jtc284/Personal/master/Images/Hometown.png)
 
-<img src="https://raw.githubusercontent.com/jtc284/Personal/master/Monroe.jpg" height=200 width=100>
+<img src="https://raw.githubusercontent.com/jtc284/Personal/master/Images/Hometown.png" height=200 width=100>
 
 ## Links
 You can also link text to a webpage. For example, I've inserted a link [here](http://aguaclara.cee.cornell.edu) to the AguaClara website.
