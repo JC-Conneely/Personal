@@ -117,7 +117,7 @@ tempArray=np.arange(273,473,1)*u.kelvin
 viscArray=pc.viscosity_kinematic(tempArray)
 reArray=pc.re_pipe(Q,R,viscArray)
 
-plt.plot(tempArray,reArray,'-',label='Reynolds Number')
+plt.plot(tempArray,'-',label='Reynolds Number')
 plt.xlabel('Temperature (Kelvin)')
 plt.ylabel('Reynolds Number')
 plt.title('The Effect of Temperature on Reynolds Number')
@@ -125,6 +125,8 @@ plt.minorticks_on()
 plt.grid(which='major')
 plt.grid(which='minor')
 plt.show()
+
+#for some reason the pc module isn't being recognized, so I was unable to save the plot to my personal repository
 ```
 
 # GitHub Basics
