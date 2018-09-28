@@ -256,6 +256,7 @@ $$ D = \frac{k_BT}{6\pi\eta r} $$
 
 ```python
 from scipy.constants import Boltzmann as kB_sc
+from aide_design.play import*
 
 kB = kB_sc * u.joule / u.kelvin
 
