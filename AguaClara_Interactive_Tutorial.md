@@ -313,4 +313,4 @@ Congratulations! You've completed this interactive tutorial. Now all you need to
 
 1. Stage your changes.
 2. In your commit message write that you've completed the tutorial.
-3. Commit your changes and push them.
+3. Commit your changes and push them...
